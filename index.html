@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alcoólicos Anônimos – Grupo Inovação Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #0D63A5;
+            --lightblue: #F0F6FC;
+            --dark: #042C5C;
+            --accent: #FFB840;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif
+        }
+
+        body {
+            background: #fff;
+            color: #333;
+            line-height: 1.6
+        }
+
+        header {
+            background: var(--blue);
+            color: #fff;
+            padding: 20px 10px
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: auto
+        }
+
+        header h1 {
+            font-size: 1.8rem
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity .2s
+        }
+
+        nav a:hover {
+            opacity: .8
+        }
+
+        .hero {
+            background: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1650&q=80') center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            padding: 0 15px
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            max-width: 600px
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 20px
+        }
+
+        .section {
+            padding: 60px 15px;
+            max-width: 1100px;
+            margin: auto
+        }
+
+        .section h3 {
+            font-size: 1.6rem;
+            color: var(--blue);
+            margin-bottom: 15px
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px
+        }
+
+        .card {
+            background: var(--lightblue);
+            padding: 25px;
+            border-radius: 6px;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column
+        }
+
+        .card h4 {
+            margin-bottom: 10px;
+            color: var(--dark)
+        }
+
+        .card p {
+            flex: 1
+        }
+
+        footer {
+            background: var(--dark);
+            color: #fff;
+            text-align: center;
+            padding: 25px 10px;
+            font-size: .9rem
+        }
+
+        #nav-toggle {
+            display: none
+        }
+
+        #nav-toggle-label {
+            display: none;
+            font-size: 1.8rem;
+            color: #fff;
+            cursor: pointer
+        }
+
+        @media(max-width:768px) {
+            nav ul {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                margin-top: 10px
+            }
+
+            #nav-toggle:checked+nav ul {
+                display: flex
+            }
+
+            #nav-toggle-label {
+                display: block
+            }
+        }
+
+        /* About section tweaks (kept) */
+        .about {
+            background: var(--lightblue);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .05)
+        }
+
+        .about .intro {
+            text-align: center;
+            margin-bottom: 30px
+        }
+
+        .about .intro h3 {
+            font-size: 2rem;
+            color: var(--dark)
+        }
+
+        .about .intro .tagline {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 8px
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px
+        }
+
+        .about-card {
+            background: #fff;
+            border-left: 5px solid var(--accent);
+            padding: 25px;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, .04);
+            transition: transform .2s
+        }
+
+        .about-card:hover {
+            transform: translateY(-4px)
+        }
+
+        .about-card h4 {
+            margin-bottom: 10px;
+            color: var(--blue);
+            font-size: 1.1rem
+        }
+
+        .about-card ul {
+            list-style: disc;
+            padding-left: 20px
+        }
+
+        .about blockquote {
+            margin-top: 30px;
+            font-style: italic;
+            color: #444;
+            border-left: 4px solid var(--accent);
+            padding-left: 15px
+        }
+
+        /* Quiz section */
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px
+        }
+
+        .quiz-item {
+            background: var(--lightblue);
+            padding: 15px;
+            border-radius: 6px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px
+        }
+
+        .quiz-item input {
+            margin-top: 4px;
+            transform: scale(1.2)
+        }
+
+        .quiz-result {
+            margin-top: 25px;
+            font-weight: 700;
+            font-size: 1.1rem
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>AA Grupo Inovação Online</h1>
+            <input type="checkbox" id="nav-toggle" />
+            <label for="nav-toggle" id="nav-toggle-label">&#9776;</label>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre o A.A.</a></li>
+                    <li><a href="#aa-para-voce">AA é pra você?</a></li>
+                    <li><a href="#participar">Como Participar</a></li>
+                    <li><a href="#encontros">Aos Familiares e Amigos</a></li>
+                    <li><a href="#recursos">Recursos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="inicio" class="hero">
+        <div>
+            <h2>Tem problemas com álcool? Há uma solução. Estamos aqui para ajudar, 100% online e gratuito.</h2>
+            <a href="#participar" class="btn">Saiba Como Participar</a>
+        </div>
+    </section>
+    <!-- ABOUT -->
+    <section id="sobre" class="section about">
+        <div class="intro">
+            <h3>Sobre o A.A.</h3>
+            <p class="tagline">Uma irmandade mundial que salva vidas desde 1935.</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <h4>O que é A.A.?</h4>
+                <p>Alcoólicos Anônimos é uma comunidade de homens e mulheres que compartilham experiência, força e
+                    esperança para superar o alcoolismo – sem taxas, fichas ou hierarquias.</p>
+            </div>
+            <div class="about-card">
+                <h4>Grupos &amp; Reuniões</h4>
+                <ul>
+                    <li>114&nbsp;mil grupos em 180&nbsp;países</li>
+                    <li>Reuniões abertas (todos) e fechadas (somente alcoólicos)</li>
+                    <li>Serviço rotativo e autonomia local</li>
+                </ul>
+            </div>
+            <div class="about-card">
+                <h4>Quem pode participar?</h4>
+                <p>Basta o desejo de parar de beber. Sem registros, mensalidades ou requisitos religiosos.</p>
+            </div>
+            <div class="about-card">
+                <h4>O que A.A. não faz</h4>
+                <ul>
+                    <li>Não fornece tratamento médico ou hospedagem</li>
+                    <li>Não aceita contribuições externas</li>
+                    <li>Não fiscaliza seus membros – participação é voluntária</li>
+                </ul>
+            </div>
+        </div>
+        <blockquote>“Você não está sozinho – um alcoólico ajudando outro é o coração de A.A.”</blockquote>
+    </section>
+    <!-- QUIZ -->
+    <section id="aa-para-voce" class="section">
+        <h3>AA é pra você?</h3>
+        <p>Responda às 12 perguntas abaixo marcando <strong>SIM</strong>. Se marcar quatro ou mais, talvez seja hora de
+            conversar conosco.</p>
+        <form id="quizForm">
+            <div class="quiz-grid">
+                <div class="quiz-item"><input type="checkbox" class="quiz-check" id="q1"><label for="q1">1. Já tentou
+                        parar de beber por uma semana (ou mais), sem conseguir?</label></div>
+                <div class="quiz-item"><input type="checkbox" class="quiz-check" id="q2"><label for="q2">2. Ressente‑se
+                        com conselhos de quem tenta fazê‑lo parar de beber?</label></div>
+                <div class="quiz-item"><input type="checkbox" class="quiz-check" id="q3"><label for="q3">3. Já tentou
+                        controlar a bebida trocando uma bebida alcoólica por outra?</label></div>
+                <div class="quiz-item"><input type="checkbox" class="quiz-check" id="q4"><label for="q4">4. Tomou algum
+                        trago pela manhã nos últimos doze meses?</label></div>
+                <div class="quiz-item"><input type="checkbox" class="quiz-check" id="q5"><label for="q5">5. Inveja as
+                        pessoas que podem beber sem criar problemas?</label></div>
+                <div class="quiz-item"><input type="checkbox" class="quiz-check" id="q6"><label for="q6">6. Seu problema
+                        de bebida vem se tornando mais sério no último ano?</label></div>
+                <div class="quiz-item"><input type="checkbox" class="quiz-check" id="q7"><label for="q7">7. A bebida já
+                        criou problemas no seu lar?</label></div>
+                <div class="quiz-item"><input type="checkbox" class="quiz-check" id="q8"><label for="q8">8. Em eventos
+                        onde as bebidas são limitadas, tenta conseguir doses extras?</label></div>
+                <div class="quiz-item"><input type="checkbox" class="quiz-check" id="q9"><label for="q9">9. Afirma que
+                        bebe quando quer e pára quando quer, apesar de provas em contrário?</label></div>
+                <div class="quiz-item"><input type="checkbox" class="quiz-check" id="q10"><label for="q10">10. Faltou ao
+                        trabalho no último ano por causa da bebida?</label></div>
+                <div class="quiz-item"><input type="checkbox" class="quiz-check" id="q11"><label for="q11">11. Já teve
+                        ‘apagamento’ de memória durante uma bebedeira?</label></div>
+                <div class="quiz-item"><input type="checkbox" class="quiz-check" id="q12"><label for="q12">12. Já pensou
+                        que poderia aproveitar mais a vida se não bebesse?</label></div>
+            </div>
+            <p class="quiz-result" id="quizResult">Você respondeu <span id="yesCount">0</span> SIM.</p>
+        </form>
+    </section>
+
+    <section id="participar" class="section">
+        <h3>Como Participar do Grupo Inovação</h3>
+        <div class="cards">
+            <div class="card">
+                <h4>1️⃣ Verifique sua Necessidade</h4>
+                <p>Somente o indivíduo pode decidir se tem problemas com bebida. Se você acha que pode se beneficiar da
+                    ajuda do A.A., seja bem‑vindo(a).</p>
+            </div>
+            <div class="card">
+                <h4>2️⃣ Acesse Nossos Encontros</h4>
+                <p>Nossos encontros acontecem <strong>Segunda a Sexta‑feira às 20h (horário de Brasília)</strong> via
+                    Google Meet. Clique no botão abaixo para entrar.</p>
+                <a href="https://meet.google.com/dhm-gsyu-qdh" class="btn" target="_blank" rel="noopener">Entrar no Google Meet</a>
+            </div>
+            <div class="card">
+                <h4>3️⃣ Mantenha‑se Conectado</h4>
+                <p>Adicione nosso grupo de WhatsApp para receber lembretes e material de apoio.</p>
+                <a href="https://chat.whatsapp.com/XXXXXXXXXXX" class="btn" target="_blank" rel="noopener">Entrar no
+                    WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="encontros" class="section">
+        <h3>Aos Familiares e Amigos</h3> 
+        <p>Se você está preocupado com alguém que pode ter problemas com álcool, saiba que o A.A. também oferece
+            recursos para familiares e amigos. Nossos encontros são abertos a todos que desejam entender mais sobre o
+            alcoolismo e como apoiar seus entes queridos.</p>
+        <div id="meetings"></div>
+    </section>
+
+    <section id="recursos" class="section">
+        <h3>Recursos Recomendados</h3>
+        <div class="cards">
+            <div class="card">
+                <h4>Site Oficial do A.A.</h4>
+                <p>Informações completas sobre a Irmandade, literatura e perguntas frequentes.</p>
+                <a href="https://aa.org.br" class="btn" target="_blank" rel="noopener">Visitar aa.org.br</a>
+            </div>
+            <div class="card">
+                <h4>Reflexões Diárias</h4>
+                <p>Mensagens inspiradoras para manter a sobriedade um dia de cada vez.</p>
+                <a href="https://aaonline.com.br/reflexao-diaria" class="btn" target="_blank" rel="noopener">Ler
+                    Reflexões</a>
+            </div>
+            <div class="card">
+                <h4>Linha de Ajuda</h4>
+                <p>Se você precisa de ajuda imediata, entre em contato com nossa linha de ajuda.</p>
+                <a href="https://www.aa.org.br/linha-de-ajuda" class="btn">Acessar Linha de Ajuda</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="section">
+        <h3>Fale Conosco</h3>
+        <p>Envie‑nos uma mensagem e responderemos assim que possível.</p>
+        <form id="contactForm">
+            <div style="display:grid;gap:15px;max-width:600px;">
+                <input type="text" id="name" placeholder="Seu nome" required />
+                <input type="email" id="email" placeholder="Seu e‑mail" required />
+                <textarea id="message" placeholder="Sua mensagem" rows="5" required></textarea>
+                <button type="submit" class="btn">Enviar</button>
+                <p id="formResponse" style="display:none;"></p>
+            </div>
+        </form>
+    </section>
+
+    <footer>© <span id="year"></span> Grupo Inovação Online – Alcoólicos Anônimos Brasil. Não somos afiliados a nenhuma
+        seita, religião ou instituição.</footer>
+    <script>
+        // Atualiza ano rodapé
+        document.getElementById('year').textContent = new Date().getFullYear();
+        // Lista de reuniões (exemplo)
+        const meetings = [{ day: 'Domingo', time: '21:00', link: '#' }, { day: 'Segunda', time: '21:00', link: '#' },];
+        // Quiz logic
+        const checkboxes = document.querySelectorAll('.quiz-check');
+        const resultEl = document.getElementById('quizResult');
+        const yesCountEl = document.getElementById('yesCount');
+        function updateCount() {
+            const count = [...checkboxes].filter(cb => cb.checked).length;
+            yesCountEl.textContent = count;
+            if (count >= 4) {
+                resultEl.innerHTML = `Você respondeu <strong>${count}</strong> SIM. Pode ser que você tenha problemas com bebida. <a href='#participar'>Veja como o A.A. pode ajudar</a>.`;
+            } else {
+                resultEl.innerHTML = `Você respondeu <strong>${count}</strong> SIM.`;
+            }
+        }
+        checkboxes.forEach(cb => cb.addEventListener('change', updateCount));
+    </script>
+</body>
+
+</html>
