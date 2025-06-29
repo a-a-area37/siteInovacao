@@ -5,41 +5,57 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Alcoólicos Anônimos – Grupo Inovação Online</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet" />
     <style>
         :root {
             --blue: #0D63A5;
+            --blue-dark: #033B73;
+            --light: #FFFFFF;
             --lightblue: #F0F6FC;
             --dark: #042C5C;
             --accent: #FFB840;
+            --radius: 8px;
+            --shadow: 0 5px 15px rgba(0, 0, 0, .06);
+            --shadow-sm: 0 2px 6px rgba(0, 0, 0, .08)
         }
 
-        * {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
             margin: 0;
-            padding: 0;
-            font-family: 'Nunito', sans-serif
+            padding: 0
         }
 
         body {
-            background: #fff;
+            font-family: 'Nunito', sans-serif;
+            background: var(--light);
             color: #333;
-            line-height: 1.6
+            line-height: 1.6;
+            scroll-behavior: smooth
         }
 
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        /* NAV */
         header {
-            background: var(--blue);
-            color: #fff;
-            padding: 20px 10px
+            background: linear-gradient(90deg, var(--blue-dark), var(--blue));
+            color: var(--light);
+            box-shadow: var(--shadow);
+            padding: 20px 0
         }
 
         header .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            max-width: 1100px;
-            margin: auto
+            flex-wrap: wrap
         }
 
         header h1 {
@@ -49,90 +65,28 @@
         nav ul {
             list-style: none;
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px
+            gap: 20px
         }
 
         nav a {
-            color: #fff;
-            text-decoration: none;
             font-weight: 600;
-            transition: opacity .2s
+            position: relative;
+            padding: 4px 0
         }
 
-        nav a:hover {
-            opacity: .8
-        }
-
-        .hero {
-            background: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1650&q=80') center/cover;
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            text-align: center;
-            padding: 0 15px
-        }
-
-        .hero h2 {
-            font-size: 2rem;
-            max-width: 600px
-        }
-
-        .btn {
-            display: inline-block;
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            height: 2px;
+            width: 0;
             background: var(--accent);
-            color: #000;
-            padding: 12px 25px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 700;
-            margin-top: 20px
+            transition: width .25s
         }
 
-        .section {
-            padding: 60px 15px;
-            max-width: 1100px;
-            margin: auto
-        }
-
-        .section h3 {
-            font-size: 1.6rem;
-            color: var(--blue);
-            margin-bottom: 15px
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px
-        }
-
-        .card {
-            background: var(--lightblue);
-            padding: 25px;
-            border-radius: 6px;
-            min-height: 180px;
-            display: flex;
-            flex-direction: column
-        }
-
-        .card h4 {
-            margin-bottom: 10px;
-            color: var(--dark)
-        }
-
-        .card p {
-            flex: 1
-        }
-
-        footer {
-            background: var(--dark);
-            color: #fff;
-            text-align: center;
-            padding: 25px 10px;
-            font-size: .9rem
+        nav a:hover::after {
+            width: 100%
         }
 
         #nav-toggle {
@@ -141,63 +95,146 @@
 
         #nav-toggle-label {
             display: none;
-            font-size: 1.8rem;
-            color: #fff;
-            cursor: pointer
+            font-size: 2rem;
+            color: var(--light)
         }
 
         @media(max-width:768px) {
             nav ul {
                 display: none;
-                width: 100%;
                 flex-direction: column;
-                margin-top: 10px
+                width: 100%;
+                align-items: center;
+                margin-top: 15px
             }
 
-            #nav-toggle:checked+nav ul {
+            #nav-toggle:checked~nav ul {
                 display: flex
             }
 
             #nav-toggle-label {
-                display: block
+                display: block;
+                cursor: pointer
             }
         }
 
-        /* About section tweaks (kept) */
-        .about {
-            background: var(--lightblue);
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, .05)
-        }
-
-        .about .intro {
+        /* HERO */
+        .hero {
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1650&q=80') center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            margin-bottom: 30px
+            color: var(--light)
         }
 
-        .about .intro h3 {
-            font-size: 2rem;
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, .55)
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 15px
+        }
+
+        .hero h2 {
+            font-size: clamp(1.5rem, 4vw, 2.4rem);
+            text-shadow: 0 3px 6px rgba(0, 0, 0, .6)
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: var(--radius);
+            background: var(--accent);
+            color: #000;
+            font-weight: 700;
+            box-shadow: var(--shadow-sm);
+            margin-top: 25px;
+            transition: transform .2s, box-shadow .2s
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, .12)
+        }
+
+        /* GENERIC */
+        .section {
+            padding: 70px 15px;
+            max-width: 1100px;
+            margin: auto
+        }
+
+        .section h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--blue);
+            margin-bottom: 35px
+        }
+
+        .section h3::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 10px auto 0;
+            border-radius: 2px
+        }
+
+        .grid {
+            display: grid;
+            gap: 25px
+        }
+
+        .cards {
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
+        }
+
+        .card {
+            background: var(--lightblue);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            transition: transform .2s
+        }
+
+        .card:hover {
+            transform: translateY(-4px)
+        }
+
+        .card h4 {
+            margin-bottom: 10px;
             color: var(--dark)
         }
 
-        .about .intro .tagline {
-            font-size: 1rem;
-            color: #555;
-            margin-top: 8px
+        /* ABOUT */
+        .about {
+            background: var(--lightblue);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow)
         }
 
         .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
         }
 
         .about-card {
             background: #fff;
-            border-left: 5px solid var(--accent);
             padding: 25px;
-            border-radius: 6px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, .04);
+            border-left: 5px solid var(--accent);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
             transition: transform .2s
         }
 
@@ -205,50 +242,38 @@
             transform: translateY(-4px)
         }
 
-        .about-card h4 {
-            margin-bottom: 10px;
-            color: var(--blue);
-            font-size: 1.1rem
-        }
-
-        .about-card ul {
-            list-style: disc;
-            padding-left: 20px
-        }
-
-        .about blockquote {
-            margin-top: 30px;
-            font-style: italic;
-            color: #444;
-            border-left: 4px solid var(--accent);
-            padding-left: 15px
-        }
-
-        /* Quiz section */
+        /* QUIZ */
         .quiz-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px
+            grid-template-columns: 1fr
         }
 
         .quiz-item {
             background: var(--lightblue);
             padding: 15px;
-            border-radius: 6px;
+            border-radius: var(--radius);
             display: flex;
-            align-items: flex-start;
             gap: 10px
         }
 
         .quiz-item input {
-            margin-top: 4px;
-            transform: scale(1.2)
+            transform: scale(1.2);
+            margin-top: 4px
         }
 
         .quiz-result {
             margin-top: 25px;
             font-weight: 700;
             font-size: 1.1rem
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 35px 10px;
+            font-size: .9rem;
+            margin-top: 60px
         }
     </style>
 </head>
@@ -275,7 +300,6 @@
     <section id="inicio" class="hero">
         <div>
             <h2>Tem problemas com álcool? Há uma solução. Estamos aqui para ajudar, 100% online e gratuito.</h2>
-            <a href="#participar" class="btn">Saiba Como Participar</a>
         </div>
     </section>
     <!-- ABOUT -->
@@ -287,15 +311,37 @@
         <div class="about-grid">
             <div class="about-card">
                 <h4>O que é A.A.?</h4>
-                <p>Alcoólicos Anônimos é uma comunidade de homens e mulheres que compartilham experiência, força e
-                    esperança para superar o alcoolismo – sem taxas, fichas ou hierarquias.</p>
+                <p>Alcoólicos Anônimos é uma irmandade mundial de pessoas que se ajudam mutuamente a permanecerem
+                    sóbrios. Eles oferecem a mesma ajuda a qualquer um que tenha um problema com a bebida e queira parar
+                    de beber. Por serem todos alcoólicos, eles têm uma compreensão mútua especial. Sabem como essa
+                    doença os atinge – e aprenderam como se recuperar do alcoolismo dentro dos princípios de A.A.
+
+                    Os membros de A.A. dizem que hoje são alcoólicos – mesmo que não bebam há anos. Eles não dizem que
+                    estão “curados”. O alcoolismo é, em nossa opinião, uma doença física, mental e espiritual,
+                    progressiva, incurável e de término fatal. Uma vez que a pessoa tenha perdido a possibilidade de
+                    controlar a bebida, nunca mais é possível beber controladamente – ou, em outras palavras, ele nunca
+                    pode tornar-se um “antigo alcoólico” ou um “ex-alcoólico”. Mas, em A.A., ele pode tornar-se um
+                    alcoólico sóbrio, um alcoólico em recuperação.</p>
             </div>
             <div class="about-card">
                 <h4>Grupos &amp; Reuniões</h4>
                 <ul>
-                    <li>114&nbsp;mil grupos em 180&nbsp;países</li>
-                    <li>Reuniões abertas (todos) e fechadas (somente alcoólicos)</li>
-                    <li>Serviço rotativo e autonomia local</li>
+                    <li>A unidade básica em A.A. é o grupo local (do bairro ou cidade) que é autônomo, salvo em assuntos
+                        que afetem outros grupos de A.A. ou à Irmandade como um todo. Nenhum grupo tem poder sobre seus
+                        membros. Os grupos, geralmente, são democráticos, assistidos por "comitês de serviços" de curtos
+                        períodos de mandato. Desta maneira, nenhum grupo de A.A. tem uma liderança permanente, pois o
+                        importante é a rotatividade no serviço.</li>
+                    <li>Cada grupo realiza reuniões regulares, nas quais os membros relatam entre si suas experiências,
+                        forças e esperanças em seu processo de recuperação seguindo aos sugeridos "DOZE PASSOS" e às
+                        "DOZE TRADIÇÕES" sugeridas para as relações dentro da Irmandade e com a comunidade de fora.
+                        Existem reuniões abertas para qualquer pessoa interessada e reuniões fechadas somente para
+                        alcoólicos.</li>
+                    <li>Para ser membro de A.A. basta o desejo de parar de beber. Homens e mulheres provenientes de
+                        todos os níveis sociais, desde adolescentes até pessoas com idade avançada, de todas as raças,
+                        de todos os tipos de afiliações religiosas ou mesmo sem afiliação religiosa nenhuma. Os membros
+                        de A.A. ajudam qualquer alcoólico que demonstre interesse em ficar sóbrio e solicite ajuda. Os
+                        membros de A.A. têm satisfação em compartilhar suas experiências com qualquer pessoa
+                        interessada, seja em conversações ou em reuniões formais.</li>
                 </ul>
             </div>
             <div class="about-card">
@@ -305,7 +351,39 @@
             <div class="about-card">
                 <h4>O que A.A. não faz</h4>
                 <ul>
-                    <li>Não fornece tratamento médico ou hospedagem</li>
+                    <li>A.A. não leva os membros a tentar convencer alcoólicos a ingressar na Irmandade. A.A. é para os
+                        alcoólicos que querem alcançar sobriedade.
+
+                        A.A. não vigia seus membros para ver se vão beber ou não, A.A. ajuda os alcoólicos a se
+                        ajudarem.
+
+                        A.A. não é uma organização religiosa. Todos os membros são livres para decidir sobre as suas
+                        próprias ideias a respeito do significado da vida.
+
+                        A.A. não é uma organização médica, não dá remédios nem orientação psiquiátrica.
+
+                        A.A. não dirige quaisquer hospitais, ambulatórios, sanatórios; nem fornece serviços de
+                        enfermagem.
+
+                        A.A. não tem ligação com qualquer outra organização. Mas A.A. coopera com organizações que
+                        combatem o alcoolismo. Alguns membros trabalham para tais organizações – mas por motivos
+                        pessoais – não como representantes de A.A.
+
+                        A.A. não aceita dinheiro de fontes fora de A.A. nem particulares ou governamentais.
+
+                        A.A. não oferece qualquer serviço social, não oferece hospedagem, comida, roupa, emprego ou
+                        dinheiro. A.A. ajuda o alcoólico a permanecer sóbrio, para que ele possa conseguir essas coisas
+                        por si mesmo.
+
+                        Alcoólicos Anonimos enfatiza o “anonimato” dos membros da Irmandade. Não admite que os nomes de
+                        seus membros apareçam na TV, rádio, jornais, internet ou qualquer outro meio de divulgação. E
+                        membros não citam nomes de outros membros para pessoas fora de A.A. Mas os membros não ficam
+                        envergonhados por pertencerem em A.A. Eles apenas querem encorajar mais alcoólicos a encontrar
+                        ajuda através de A.A. eles não querem parecer heróis e heroínas simplesmente por cuidarem de sua
+                        própria saúde.
+
+                        A.A. não fornece cartas de referência a comissões de livramento condicional, advogados, oficiais
+                        de justiça, agências de emprego, etc.</li>
                     <li>Não aceita contribuições externas</li>
                     <li>Não fiscaliza seus membros – participação é voluntária</li>
                 </ul>
@@ -361,19 +439,14 @@
                 <h4>2️⃣ Acesse Nossos Encontros</h4>
                 <p>Nossos encontros acontecem <strong>Segunda a Sexta‑feira às 20h (horário de Brasília)</strong> via
                     Google Meet. Clique no botão abaixo para entrar.</p>
-                <a href="https://meet.google.com/dhm-gsyu-qdh" class="btn" target="_blank" rel="noopener">Entrar no Google Meet</a>
-            </div>
-            <div class="card">
-                <h4>3️⃣ Mantenha‑se Conectado</h4>
-                <p>Adicione nosso grupo de WhatsApp para receber lembretes e material de apoio.</p>
-                <a href="https://chat.whatsapp.com/XXXXXXXXXXX" class="btn" target="_blank" rel="noopener">Entrar no
-                    WhatsApp</a>
+                <a href="https://meet.google.com/dhm-gsyu-qdh" class="btn" target="_blank" rel="noopener">Entrar no
+                    Google Meet</a>
             </div>
         </div>
     </section>
 
     <section id="encontros" class="section">
-        <h3>Aos Familiares e Amigos</h3> 
+        <h3>Aos Familiares e Amigos</h3>
         <p>Se você está preocupado com alguém que pode ter problemas com álcool, saiba que o A.A. também oferece
             recursos para familiares e amigos. Nossos encontros são abertos a todos que desejam entender mais sobre o
             alcoolismo e como apoiar seus entes queridos.</p>
@@ -386,7 +459,7 @@
             <div class="card">
                 <h4>Site Oficial do A.A.</h4>
                 <p>Informações completas sobre a Irmandade, literatura e perguntas frequentes.</p>
-                <a href="https://aa.org.br" class="btn" target="_blank" rel="noopener">Visitar aa.org.br</a>
+                <a href="https://aapr.org.br" class="btn" target="_blank" rel="noopener">Visitar aapr.org.br</a>
             </div>
             <div class="card">
                 <h4>Reflexões Diárias</h4>
@@ -397,7 +470,12 @@
             <div class="card">
                 <h4>Linha de Ajuda</h4>
                 <p>Se você precisa de ajuda imediata, entre em contato com nossa linha de ajuda.</p>
-                <a href="https://www.aa.org.br/linha-de-ajuda" class="btn">Acessar Linha de Ajuda</a>
+                <a href="https://api.whatsapp.com/send?phone=5541992068162&text=Encontrei%20o%20site%20de%20A.A.%20e%20estou%20precisando%20de%20ajuda..." class="btn">Acessar Linha de Ajuda</a>
+            </div>
+            <div class="card">
+                <h4>Encontre um Grupo Perto de Você</h4>
+                <p>Descubra grupos de A.A. em sua região.</p>
+                <a href="https://aapr.org.br/grupos-aa" class="btn" target="_blank" rel="noopener">Ver Grupos</a>
             </div>
         </div>
     </section>
